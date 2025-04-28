@@ -1,0 +1,109 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #111;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #101820;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #00e0ff;
+}
+
+.hero {
+  background: url('assets/hero-image.jpg') no-repeat center center/cover;
+  color: #fff;
+  padding: 180px 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  padding: 14px 28px;
+  background: #00e0ff;
+  color: #101820;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.cta-btn:hover {
+  background: #00c0e0;
+}
+
+.section {
+  padding: 80px 60px;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #101820;
+}
+
+.section ul {
+  margin-top: 20px;
+}
+
+.section ul li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #101820;
+  color: #fff;
+  margin-top: 60px;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
