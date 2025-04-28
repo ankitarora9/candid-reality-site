@@ -1,59 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Candid Reality</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time 3D Visualization</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    /* Header Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Comparison Section */
+    .section {
+      padding: 4rem 0;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .comparison-item {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .comparison-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    /* Testimonial */
+    .testimonial {
+      background: white;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .form-group input, 
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.25rem;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">Candid Reality</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <h1>Bringing Spaces to Life with Real-Time Visualization</h1>
-    <p>Architectural Visualization Studio for Residential & Commercial Projects.</p>
-    <a href="#contact" class="cta-btn">Get in Touch</a>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <p>At Candid Reality, we create hyper-realistic, interactive visualizations for real estate and architecture projects. We help clients see their future spaces today — making decisions easier and faster.</p>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Real-Time 3D Visualization</li>
-      <li>Interactive VR Walkthroughs</li>
-      <li>AR-Enabled Project Previews</li>
-      <li>Interior and Exterior Design Simulations</li>
-    </ul>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Email: hello@candidreality.in</p>
-    <p>Phone: +91-9999-784858</p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Candid Reality. All rights reserved.</p>
-  </footer>
-
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Bring Your Designs to Life – In Real Time</h1>
+      <p>Real-time 3D visualization for architects & developers.</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary">Get a Free Demo</button>
+        <button class="btn btn-outline">View Portfolio</button>
+      </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="section">
+      <h2>Why Flat Renders Aren't Enough</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">
+        Show your space as if it's already built. We deliver immersive, real-time visuals that impress stakeholders and speed up approvals.
+      </p>
+      <div class="comparison">
+        <div class="comparison-item">
+          <h3>Static Render</h3>
+          <!-- Replace with actual image -->
+          <div style="height: 200px; background: #e2e8f0; border-radius: 0.25rem;"></div>
+        </div>
+        <div class="comparison-item">
+          <h3>Real-Time Visual</h3>
+          <!-- Replace with actual image -->
+          <div style="height: 200px; background: #c7d2fe; border-radius: 0.25rem;"></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section">
+      <h2>Tailored Solutions for Every Space</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h3>Commercial Visuals</h3>
+          <p>Present spaces, before they're real.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Residential Walkthroughs</h3>
+          <p>Homeowners see it before it's built.</p>
+        </div>
+        <div class="feature-card">
+          <h3>VR Support</h3>
+          <p>Fully immersive experiences.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonial -->
+    <section class="section">
+      <div class="testimonial">
+        <p>"Our clients were blown away by the realism and speed. Candid Reality helped us close deals faster."</p>
+        <div class="testimonial-author">Ryan M., Principal Architect</div>
+      </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section class="section">
+      <h2>Start Visualizing Smarter Today</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">Send us your plans – we'll do the rest.</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your email">
+        </div>
+        <div class="form-group">
+          <label for="project-type">Project Type</label>
+          <select id="project-type">
+            <option value="">Select project type</option>
+            <option value="commercial">Commercial</option>
+            <option value="residential">Residential</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Book a Free Consultation</button>
+      </form>
+    </section>
+  </div>
 </body>
 </html>
